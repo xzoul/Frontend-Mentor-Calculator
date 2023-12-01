@@ -1,0 +1,154 @@
+:root {
+  --dl-color-gray-500: #595959;
+  --dl-color-gray-700: #999999;
+  --dl-color-gray-900: #d9d9d9;
+  --dl-size-size-large: 144px;
+  --dl-size-size-small: 48px;
+  --dl-color-danger-300: #a22020;
+  --dl-color-danger-500: #bf2626;
+  --dl-color-danger-700: #e14747;
+  --dl-color-gray-black: #000000;
+  --dl-color-gray-white: #ffffff;
+  --dl-size-size-medium: 96px;
+  --dl-size-size-xlarge: 192px;
+  --dl-size-size-xsmall: 16px;
+  --dl-space-space-unit: 16px;
+  --dl-color-primary-100: #003eb3;
+  --dl-color-primary-300: #0074f0;
+  --dl-color-primary-500: #14a9ff;
+  --dl-color-primary-700: #85dcff;
+  --dl-color-success-300: #199033;
+  --dl-color-success-500: #32a94c;
+  --dl-color-success-700: #4cc366;
+  --dl-size-size-xxlarge: 288px;
+  --dl-color-primary-grey: #999999ff;
+  --dl-size-size-maxwidth: 1400px;
+  --dl-radius-radius-round: 50%;
+  --dl-color-primary-tomato: #ff6157ff;
+  --dl-space-space-halfunit: 8px;
+  --dl-space-space-sixunits: 96px;
+  --dl-space-space-twounits: 32px;
+  --dl-radius-radius-radius2: 2px;
+  --dl-radius-radius-radius4: 4px;
+  --dl-radius-radius-radius8: 8px;
+  --dl-space-space-fiveunits: 80px;
+  --dl-space-space-fourunits: 64px;
+  --dl-color-calculator-keybg: #626f97ff;
+  --dl-space-space-threeunits: 48px;
+  --dl-color-calculator-keybg2: #eae3dcff;
+  --dl-color-calculator-mainbg: #3a4764ff;
+  --dl-color-calculator-screenbg: #181834ff;
+  --dl-color-calculator-togglebg: #232c43ff;
+  --dl-color-calculator-keyshadow: #3f4c6fff;
+  --dl-color-primary-charcoalgrey: #36384eff;
+  --dl-color-calculator-keyshadow2: #b4a598ff;
+  --dl-color-primary-darkslategrey: #252e41;
+  --dl-space-space-oneandhalfunits: 24px;
+  --dl-color-calculator-keybgtoggle: #94261aff;
+  --dl-color-calculator-keybgtshadow: #d04030ff;
+  --dl-color-calculator-verydarkgrayishbluetext: #444b5aff;
+  --calculator-key-text-color: #232c43ff;
+  --calculator-textinput-color: white;
+  --calculator-hovertext: WHITE;
+  --calculator-hoverbtn: #a2b3e1;
+  --calculator-hovereql: #f96c5b;
+  --calculator-hovereqlhover: #94261a;
+}
+
+:root.theme2 {
+  --dl-color-calculator-keybg: hsl(185, 42%, 37%);
+  --dl-color-calculator-keybg2: hsl(45, 7%, 89%);
+  --dl-color-calculator-mainbg: hsl(0, 0%, 90%);
+  --dl-color-calculator-screenbg: hsl(0, 0%, 100%);
+  --dl-color-calculator-togglebg: hsl(0, 5%, 81%);
+  --dl-color-calculator-keyshadow: hsl(185, 58%, 25%);
+  --dl-color-calculator-keyshadow2: hsl(35, 11%, 61%);
+  --dl-color-calculator-keybgtoggle: hsl(25, 98%, 40%);
+  --dl-color-calculator-keybgtshadow: hsl(25, 99%, 27%);
+  --dl-color-calculator-verydarkgrayishbluetext: hsl(60, 10%, 19%);
+  --calculator-key-text-color: hsl(60, 10%, 19%);
+  --calculator-textinput-color: hsl(60, 10%, 19%);
+  --calculator-hovertext: white;
+  --calculator-hoverbtn: rgba(98, 181, 189, 255);
+  --calculator-hovereql: #ff8b38;
+  --calculator-hovereqlhover: hsl(25, 98%, 40%);
+}
+
+:root.theme3 {
+  --dl-color-calculator-keybg: hsl(281, 89%, 26%);
+  --dl-color-calculator-keybg2: hsl(268, 47%, 21%);
+  --dl-color-calculator-mainbg: hsl(268, 75%, 9%);
+  --dl-color-calculator-screenbg: hsl(268, 71%, 12%);
+  --dl-color-calculator-togglebg: hsl(268, 71%, 12%);
+  --dl-color-calculator-keyshadow: hsl(285, 91%, 52%);
+  --dl-color-calculator-keyshadow2: hsl(290, 70%, 36%);
+  --dl-color-calculator-keybgtoggle: hsl(176, 100%, 44%);
+  --dl-color-calculator-keybgtshadow: hsl(177, 92%, 70%);
+  --dl-color-calculator-lightyellow: hsl(52, 100%, 62%);
+  --dl-color-calculator-verydarkgrayishbluetext: hsl(198, 20%, 13%);
+  --calculator-key-text-color: hsl(52, 100%, 62%);
+  --calculator-textinput-color: hsl(52, 100%, 62%);
+  --calculator-hovertext: #6b34ac;
+  --calculator-hoverbtn: rgba(134, 49, 176, 255);
+  --calculator-hovereql: #94fff9;
+  --calculator-hovereqlhover: hsl(176, 100%, 44%);
+}
+
+.button {
+  color: var(--dl-color-gray-black);
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+  border-radius: 4px;
+  background-color: var(--dl-color-gray-white);
+}
+.input {
+  color: var(--dl-color-gray-black);
+  cursor: auto;
+  padding: 0.5rem 1rem;
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+  border-radius: 4px;
+  background-color: var(--dl-color-gray-white);
+}
+.textarea {
+  color: var(--dl-color-gray-black);
+  cursor: auto;
+  padding: 0.5rem;
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+  border-radius: 4px;
+  background-color: var(--dl-color-gray-white);
+}
+.list {
+  width: 100%;
+  margin: 1em 0px 1em 0px;
+  display: block;
+  padding: 0px 0px 0px 1.5rem;
+  list-style-type: none;
+  list-style-position: outside;
+}
+.list-item {
+  display: list-item;
+}
+.teleport-show {
+  display: flex !important;
+  transform: none !important;
+}
+.Content {
+  font-size: 16px;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: 1.15;
+  text-transform: none;
+  text-decoration: none;
+}
+.Heading {
+  font-size: 32px;
+  font-family: Inter;
+  font-weight: 700;
+  line-height: 1.15;
+  text-transform: none;
+  text-decoration: none;
+}

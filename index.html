@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Calculator - Frontend Project 1</title>
+    <meta property="og:title" content="Calculator - Frontend Project 1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+    <style data-tag="reset-style-sheet">
+      html {
+        line-height: 1.15;
+      }
+      body {
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+      }
+      p,
+      li,
+      ul,
+      pre,
+      div,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      figure,
+      blockquote,
+      figcaption {
+        margin: 0;
+        padding: 0;
+      }
+      button {
+        background-color: transparent;
+      }
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: inherit;
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+      }
+      button,
+      select {
+        text-transform: none;
+      }
+      button,
+      [type="button"],
+      [type="reset"],
+      [type="submit"] {
+        -webkit-appearance: button;
+      }
+      button::-moz-focus-inner,
+      [type="button"]::-moz-focus-inner,
+      [type="reset"]::-moz-focus-inner,
+      [type="submit"]::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+      }
+      button:-moz-focus,
+      [type="button"]:-moz-focus,
+      [type="reset"]:-moz-focus,
+      [type="submit"]:-moz-focus {
+        outline: 1px dotted ButtonText;
+      }
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+      input {
+        padding: 2px 4px;
+      }
+      img {
+        display: block;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Inter;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // Function to add commas to numbers in input field
+        function addCommas(input) {
+          // Remove existing commas and non-numeric characters
+          var value = input
+            .val()
+            .replace(/,/g, "")
+            .replace(/[^0-9]/g, "");
+
+          // Add commas to the number
+          var formattedValue = Number(value).toLocaleString();
+
+          // Update the input field with the formatted value
+          input.val(formattedValue);
+        }
+
+        // Handle input event on the number input
+        $("#calculatorDisplay").on("input", function () {
+          addCommas($(this));
+        });
+      });
+
+      //Calculator
+      $(document).ready(function () {
+        // Calculator variables
+        var currentInput = "";
+        var result = 0;
+        var operator = "";
+        var eql = false;
+
+        // Function to update the display
+        function updateDisplay() {
+          $("#calculatorDisplay").val(currentInput);
+        }
+
+        // Click event for number buttons
+        $(".number").click(function () {
+          if (eql == true) {
+            currentInput = "";
+            currentInput += $(this).text();
+            updateDisplay();
+            eql = false;
+          } else {
+            currentInput += $(this).text();
+            updateDisplay();
+          }
+        });
+
+        // Click event for operator buttons
+        $(".operator").click(function () {
+          operator = $(this).text();
+          result = parseFloat(currentInput);
+          updateDisplay();
+          currentInput = "";
+        });
+
+        // Click event for backspace button
+        $("#backspace").click(function () {
+          currentInput = currentInput.slice(0, -1);
+          if (currentInput === "") {
+            // Reset result and operator when currentInput is empty
+            result = 0;
+            operator = "";
+          }
+          updateDisplay();
+        });
+
+        // Click event for equal button
+        $("#equals").click(function () {
+          if (operator !== "") {
+            var secondOperand = parseFloat(currentInput);
+
+            switch (operator) {
+              case "+":
+                result += secondOperand;
+                break;
+              case "-":
+                result -= secondOperand;
+                break;
+              case "*":
+                result *= secondOperand;
+                break;
+              case "/":
+                if (secondOperand !== 0) {
+                  result /= secondOperand;
+                } else {
+                  alert("Cannot divide by zero!");
+                }
+                break;
+            }
+
+            // Reset operator
+            operator = "";
+            currentInput = result.toString();
+            updateDisplay();
+            eql = true;
+          }
+        });
+
+        // Click event for clear button
+        $("#clear").click(function () {
+          currentInput = "";
+          result = 0;
+          operator = "";
+          updateDisplay();
+        });
+      });
+
+      $(document).ready(function () {
+        // Function to toggle the theme class on the :root element
+        function toggleTheme(themeClass) {
+          $(":root").removeClass("theme1 theme2 theme3").addClass(themeClass);
+        }
+
+        // Toggle theme on range slider input
+        $("#themeSwitch").on("input", function () {
+          var selectedValue = $(this).val();
+          toggleTheme("theme" + selectedValue);
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <link rel="stylesheet" href="./style.css" />
+    <div>
+      <link href="./calculator.css" rel="stylesheet" />
+
+      <div class="calculator-container">
+        <div class="calculator-container01">
+          <div class="calculator-container02">
+            <span class="calculator-text">calc</span>
+            <div class="calculator-container03">
+              <span class="calculator-text01">THEME</span>
+              <div class="calculator-container04">
+                <div class="calculator-container05">
+                  <span class="calculator-text02">1</span>
+                  <span class="calculator-text03">2</span>
+                  <span class="calculator-text04">3</span>
+                </div>
+                <div class="calculator-container06">
+                  <!-- <input
+                    type="radio"
+                    id="themeSwitch1"
+                    name="themeSwitch"
+                    class="calculator-radio"
+                    checked
+                  />
+                  <input
+                    type="radio"
+                    id="themeSwitch2"
+                    name="themeSwitch"
+                    class="calculator-radio1"
+                  />
+                  <input
+                    type="radio"
+                    id="themeSwitch3"
+                    name="themeSwitch"
+                    class="calculator-radio2"
+                  /> -->
+
+                  <input
+                    type="range"
+                    id="themeSwitch"
+                    name="themeSwitch"
+                    min="1"
+                    max="3"
+                    value="1"
+                    step="1"
+                    class="slider"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <input
+            type="text"
+            class="calculator-textinput"
+            id="calculatorDisplay"
+            placeholder="0"
+            readonly
+          />
+          <div class="calculator-container07">
+            <div class="calculator-container08">
+              <button class="calculator-text05 number">7</button>
+              <button class="calculator-text05 number">8</button>
+              <button class="calculator-text05 number">9</button>
+              <button class="calculator-text08" id="backspace">DEL</button>
+              <button class="calculator-text05 number">4</button>
+              <button class="calculator-text05 number">5</button>
+              <button class="calculator-text05 number">6</button>
+              <button class="calculator-text05 operator">+</button>
+              <button class="calculator-text05 number">1</button>
+              <button class="calculator-text05 number">2</button>
+              <button class="calculator-text05 number">3</button>
+              <button class="calculator-text05 operator">-</button>
+              <button class="calculator-text05 operator">.</button>
+              <button class="calculator-text05 number">0</button>
+              <button class="calculator-text05 operator">/</button>
+              <button class="calculator-text05 operator">*</button>
+            </div>
+            <div class="calculator-container09">
+              <span class="calculator-text08" id="clear">RESET</span>
+              <span class="calculator-text22" id="equals">=</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Jimmy Dela Cruz Jr.</a>.
+    </div>
+  </body>
+</html>
